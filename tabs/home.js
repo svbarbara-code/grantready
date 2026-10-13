@@ -28,7 +28,7 @@ SPA.tabs.home = {
     const dots = S.map(s => {
       const past = days(s.date) < 0, isNext = next && s.id === next.id;
       return '<div class="hm-dot ' + (past ? 'past' : isNext ? 'now' : '') + '" title="' + esc(s.title) + '">' +
-        '<span class="hm-code">' + esc(s.code.replace("TC40", "")) + '</span></div>';
+        '<span class="hm-code">' + esc(s.id.toUpperCase()) + '</span></div>';
     }).join("");
 
     panel.innerHTML =
