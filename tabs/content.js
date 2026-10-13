@@ -274,15 +274,15 @@
       sum: "Know your limits, round to whole dollars, sort every cost.",
       body: [
         P("Start from the [[nofo]]: find limits on kinds of expenses, caps on a category and the overall ceiling. Always round to whole dollars, and check whether cost sharing is required."),
-        P("[[direct]] costs are tied to the project: personnel, consultants, equipment, supplies, travel, patient care, alterations/renovations, subawards/contractual, and other. Under Other you will find study subject costs, pharmacy, publication fees (including data deposit and curation) and professional fees."),
-        P("[[fa]] costs are the shared infrastructure that can't be assigned to one project: building and equipment, utilities, telecom, administration, interest, library."),
+        P("[[direct|Direct]] costs are tied to the project: personnel, consultants, equipment, supplies, travel, patient care, alterations/renovations, subawards/contractual, and other. Under Other you will find study subject costs, pharmacy, publication fees (including data deposit and curation) and professional fees."),
+        P("[[fa|F&A]] costs are the shared infrastructure that can't be assigned to one project: building and equipment, utilities, telecom, administration, interest, library."),
         KEY("If a cost is normally covered by indirect (general admin, ordinary office supplies), it is not requested as a direct cost without strong justification."),
         TRAP("Pens and paper aren't project-specific supplies. Test tubes and lab chemicals are.")
       ] },
     { id: "cost-share", s: "spa2", title: "Cost sharing: mandatory, voluntary, uncommitted",
       sum: "Which kinds are binding, who may pay, what paperwork.",
       body: [
-        P("[[cs]] is the project cost not paid by federal funds. At Columbia it comes from departmental resources and may never come from another federal project."),
+        P("[[cs|Cost sharing]] is the project cost not paid by federal funds. At Columbia it comes from departmental resources and may never come from another federal project."),
         UL([
           "**Committed** = documented in the proposal or agreed in the NOA:",
           "→ [[mandatory]]: required by the NOFO as a condition of award.",
@@ -420,7 +420,7 @@
     { id: "modular", s: "spa2", title: "NIH modular vs detailed budgets",
       sum: "When modular is allowed and how to pick the number of modules.",
       body: [
-        P("[[modular]] budgets are for certain research applications requesting **$250,000 or less in direct costs per year**, only for activity codes **R01, R03, R15, R21, R34**. Consortium F&A is not counted toward the cap. Otherwise NIH uses the detailed format."),
+        P("[[modular|Modular]] budgets are for certain research applications requesting **$250,000 or less in direct costs per year**, only for activity codes **R01, R03, R15, R21, R34**. Consortium F&A is not counted toward the cap. Otherwise NIH uses the detailed format."),
         P("To choose modules: build a detailed budget by year (with about 3% inflation where it can apply), subtract any consortium indirect, average across years, take out one-time costs (like a big piece of equipment) and round to the nearest **$25,000**. Ask for the same number of modules every year, except to add back that one-time item."),
         CALC("Example", ["Three-year direct costs $660,000 includes $20,000 consortium F&A", "$660,000 − $20,000 = $640,000 ÷ 3 = $213,333", "Nearest $25,000 → $225,000 → 9 modules each year"]),
         KEY("Modular = simplified, round to $25,000, same count each year, no category detail.")
@@ -454,12 +454,12 @@
     { id: "rebudget-card", s: "spa3", title: "Rebudgeting and carryover",
       sum: "Moving money between categories.",
       body: [
-        P("[[rebudget]] means moving funds between categories. Whether it needs approval depends on the sponsor, the size of the shift and the categories involved. Two things already known from Session 2: participant support money can be added without approval but not moved out without it, and equipment is approved line by line.")
+        P("[[rebudget|Rebudgeting]] means moving funds between categories. Whether it needs approval depends on the sponsor, the size of the shift and the categories involved. Two things already known from Session 2: participant support money can be added without approval but not moved out without it, and equipment is approved line by line.")
       ] },
     { id: "nce-card", s: "spa3", title: "No-cost extensions",
       sum: "More time, no more money.",
       body: [
-        P("An [[nce]] extends the end date without new funds. Under the federal baseline a one-time extension of up to 12 months can be taken by giving advance written notice; a second needs approval. Some sponsors (NIH, NSF) have their own procedures, so ask the PO early, well before the end date."),
+        P("A [[nce|no-cost extension]] extends the end date without new funds. Under the federal baseline a one-time extension of up to 12 months can be taken by giving advance written notice; a second needs approval. Some sponsors (NIH, NSF) have their own procedures, so ask the PO early, well before the end date."),
         TRAP("Waiting until the last week is the usual mistake.")
       ] },
     { id: "progress-card", s: "spa3", title: "Progress reports and subawards after award",
@@ -478,7 +478,7 @@
     { id: "allow-card", s: "spf1", title: "Is the cost allowable?",
       sum: "The tests every charge must pass.",
       body: [
-        P("The [[allowable]]: reasonable and necessary, allocable to the award, consistently treated, allowed by the NOA and the cost principles, and properly documented."),
+        P("The [[allowable|cost tests]]: reasonable and necessary, allocable to the award, consistently treated, allowed by the NOA and the cost principles, and properly documented."),
         UL([
           "Consistency: a cost normally treated as indirect (general admin) can't be charged direct on a sponsored award.",
           "Typical unallowable items: alcohol, entertainment, fines and penalties, fundraising, general administration.",
@@ -489,18 +489,18 @@
     { id: "transfer-card", s: "spf1", title: "Cost transfers",
       sum: "Corrections must be timely, justified, documented.",
       body: [
-        P("A [[costtransfer]] moves an expense on or off an award. Acceptable reasons are things like correcting an error or reflecting actual benefit; unacceptable ones are using leftover funds or covering an overrun. Do them promptly with a written explanation."),
+        P("A [[costtransfer|cost transfer]] moves an expense on or off an award. Acceptable reasons are things like correcting an error or reflecting actual benefit; unacceptable ones are using leftover funds or covering an overrun. Do them promptly with a written explanation."),
         KEY("The later the transfer, the harder the justification and the greater the scrutiny.")
       ] },
     { id: "effort-card", s: "spf1", title: "Effort reporting",
       sum: "Payroll charges must follow actual work.",
       body: [
-        P("[[effort]] certification confirms that salary charged to awards matches the effort really given. Because the proposal's effort is treated as a commitment, big gaps need a conversation with the PO. The Foundations course on compensation and effort reporting (TC4005) covers this in depth.")
+        P("[[effort|Effort certification]] confirms that salary charged to awards matches the effort really given. Because the proposal's effort is treated as a commitment, big gaps need a conversation with the PO. The Foundations course on compensation and effort reporting (TC4005) covers this in depth.")
       ] },
     { id: "report-card", s: "spf1", title: "Financial reporting and drawdowns",
       sum: "Getting paid and reporting to the sponsor.",
       body: [
-        P("The [[ffr]]: Columbia requests cash or sends invoices for allowable expenses and reports to the sponsor on a schedule set in the NOA. Reports must reconcile to the ledger.")
+        P("[[ffr|Drawdowns and the FFR]]: Columbia requests cash or sends invoices for allowable expenses and reports to the sponsor on a schedule set in the NOA. Reports must reconcile to the ledger.")
       ] },
 
     /* --------- SESSION 5 · ACCOUNTING & CLOSEOUT (outline, pending) --------- */
@@ -512,7 +512,7 @@
     { id: "overrun-card", s: "spf2", title: "Overruns and cost sharing",
       sum: "Who pays when the award is overspent.",
       body: [
-        P("A [[overrun]] is covered by department or discretionary funds. It is never moved to another sponsored award. Committed cost sharing must actually be provided and tracked, with documentation, because the sponsor can ask for proof.")
+        P("A [[overrun|cost overrun]] is covered by department or discretionary funds. It is never moved to another sponsored award. Committed cost sharing must actually be provided and tracked, with documentation, because the sponsor can ask for proof.")
       ] },
     { id: "submon-card", s: "spf2", title: "Subrecipient monitoring",
       sum: "The pass-through entity's duty.",
@@ -522,7 +522,7 @@
     { id: "closeout-card", s: "spf2", title: "Closeout checklist",
       sum: "What has to be done after the end date.",
       body: [
-        P("Typical [[closeout]] work: final financial report, final technical report, inventions and property reporting, liquidating obligations within the sponsor's window (baseline about 120 days after the end date under the 2024 UG revision; confirm for each sponsor), clearing deficits, closing the account, and keeping records for the retention period (baseline three years after the final report is submitted)."),
+        P("Typical [[closeout|closeout]] work: final financial report, final technical report, inventions and property reporting, liquidating obligations within the sponsor's window (baseline about 120 days after the end date under the 2024 UG revision; confirm for each sponsor), clearing deficits, closing the account, and keeping records for the retention period (baseline three years after the final report is submitted)."),
         KEY("Start closeout planning before the end date, not after it.")
       ] }
   ];

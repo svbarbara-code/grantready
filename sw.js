@@ -1,6 +1,6 @@
 // GrantReady offline cache. index.html is network-first (updates show on the next open);
 // everything else from this site (tabs/*.js?v=..., icons) and Google Fonts is cache-first.
-const CACHE = 'grantready-v1';
+const CACHE = 'grantready-v2';   // v2: design icons + token fixes
 const CORE = ['./', 'manifest.webmanifest', 'icon-192.png', 'apple-touch-icon.png', 'favicon-32.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });

@@ -31,13 +31,13 @@ SPA.tabs.practice = (function () {
       a: "Build the application 2–8 weeks ahead. SPA wants the complete package about 5 business days before the deadline for review, and the PO submits it roughly 2 business days before. Submit early." },
     { id: "p08", s: "spa1", t: "Rascal", q: "What does a PI or department register in Rascal before a proposal goes out?",
       a: "A Rascal Proposal Tracking (PT) sheet. It is completed, routed to every involved department for approval, and finalized by the PI. The SPA PO can un-finalize it for edits, then the PI finalizes again." },
-    { id: "p09", s: "spa1", t: "COI", q: "Who has to file a conflict-of-interest disclosure, and how often?",
+    { id: "p09", g: "coi", s: "spa1", t: "COI", q: "Who has to file a conflict-of-interest disclosure, and how often?",
       a: "Every Investigator: the PI plus anyone responsible for the design, conduct or reporting of the research, whatever their title (this can include postdocs and students). Disclosures are annual and must be current before SPA can submit the proposal." },
     { id: "p10", s: "spa1", t: "Personnel", q: "Who counts as key personnel, and can one be listed at “zero” or “as needed” effort?",
       a: "People who contribute to the science in a substantive, measurable way, paid or not. Zero or as-needed effort is not acceptable for them. (On NIH forms, people with no measurable effort go under Other Significant Contributors.) Consultants can be key personnel but can’t be Columbia employees." },
-    { id: "p11", s: "spa1", t: "Subawards", q: "Subrecipient or contractor: how do you tell?",
+    { id: "p11", g: "subrecipient", s: "spa1", t: "Subawards", q: "Subrecipient or contractor: how do you tell?",
       a: "A subrecipient makes programmatic decisions, contributes effort tied directly to the project’s aims and holds publication rights. A contractor only provides goods or services. The PI decides from the nature of the work, and the choice matters because it affects indirect costs." },
-    { id: "p12", s: "spa1", t: "Subawards", q: "What does SPA need at minimum for each proposed subrecipient?",
+    { id: "p12", g: "subrecipient", s: "spa1", t: "Subawards", q: "What does SPA need at minimum for each proposed subrecipient?",
       a: "A subrecipient/contractor classification form, a statement of work, a detailed budget and justification, biosketches for its key people, current & pending support if required, and a letter of intent from the subrecipient." },
     { id: "p13", s: "spa1", t: "NOFO", q: "A solicitation says “one application per institution.” What now?",
       a: "That’s a limited submission. Tell your SPA PO right away: the institution picks its nominee internally (through the Office of Research Initiatives and Development), and only the nominee may apply, through SPA." },
@@ -45,11 +45,11 @@ SPA.tabs.practice = (function () {
       a: "Don’t sign it. Only an authorized signatory of the University can sign any agreement, including data use, material transfer and confidentiality agreements. Send it to your SPA Project Officer." },
 
     // Session 2 — preparing the budget
-    { id: "b01", s: "spa2", t: "Cost sharing", q: "What is cost sharing?",
+    { id: "b01", g: "mandatory", s: "spa2", t: "Cost sharing", q: "What is cost sharing?",
       a: "The part of a project’s cost that is not paid with sponsor (federal) money. The institution or a third party covers it." },
-    { id: "b02", s: "spa2", t: "Cost sharing", q: "Mandatory, voluntary committed (VCCS) and uncommitted cost sharing: what separates them?",
+    { id: "b02", g: "vccs", s: "spa2", t: "Cost sharing", q: "Mandatory, voluntary committed (VCCS) and uncommitted cost sharing: what separates them?",
       a: "Mandatory: the NOFO requires it. Voluntary committed: offered and written into the proposal or award although nobody required it. Uncommitted: contributed, but neither required nor promised. The first two are “committed.”" },
-    { id: "b03", s: "spa2", t: "Cost sharing", q: "Which sponsor flatly prohibits voluntary committed cost sharing, and what is the general advice on it?",
+    { id: "b03", g: "vccs", s: "spa2", t: "Cost sharing", q: "Which sponsor flatly prohibits voluntary committed cost sharing, and what is the general advice on it?",
       a: "NSF prohibits it. Elsewhere it is very strongly discouraged, so only offer it when the NOFO requires it." },
     { id: "b04", s: "spa2", t: "Cost sharing", q: "What paperwork backs a cost-share commitment at submission?",
       a: "The funding source account must be identified and approved and entered in Rascal PT, and the Chair signs a cost-share/guarantee letter to the SPA PO. (No letter is needed when the sponsor applies a salary cap.)" },
@@ -57,21 +57,21 @@ SPA.tabs.practice = (function () {
       a: "Direct: salary, travel, supplies, equipment (also consultants, patient care, renovations, consortium costs). Indirect (F&A): utilities, library and the like, i.e. building, admin and infrastructure costs that can’t be traced to one project." },
     { id: "b06", s: "spa2", t: "Basics", q: "Two housekeeping rules when you start a budget?",
       a: "Read the NOFO for budget limits first (banned expense types, category caps, an overall ceiling) and check whether cost sharing is required. Then round every figure to whole dollars." },
-    { id: "b07", s: "spa2", t: "Salary", q: "What is IBS (Institutional Base Salary), and what stays out of it?",
+    { id: "b07", g: "ibs", s: "spa2", t: "Salary", q: "What is IBS (Institutional Base Salary), and what stays out of it?",
       a: "The annual pay Columbia sets for the appointment. It leaves out bonuses and one-time or incentive pay, outside salary such as HHMI or NYSPI, and consulting income. You can’t raise it by swapping University funds for grant funds." },
     { id: "b08", s: "spa2", t: "Salary", q: "How is IBS built for CUIMC clinical faculty?",
       a: "Base salary plus any guaranteed additional compensation: IBS = X + Y." },
-    { id: "b09", s: "spa2", t: "Salary", q: "How much summer salary can a 9-month academic appointee charge, and what has to happen?",
+    { id: "b09", g: "summer", s: "spa2", t: "Salary", q: "How much summer salary can a 9-month academic appointee charge, and what has to happen?",
       a: "At most three-ninths (3/9) of the academic-year salary, each summer month being one month of full-time effort. The effort must really be spent in the summer. Released time needs Chair/Dean approval." },
     { id: "b10", s: "spa2", t: "Salary", q: "What salary limit does NSF place on senior personnel?",
       a: "No more than 2 months of salary per year in total across all their NSF grants. Going beyond that needs NSF approval through the award notice." },
-    { id: "b11", s: "spa2", t: "Person-months", q: "How do you convert percent effort into person-months? Try 25% of a 9-month appointment.",
+    { id: "b11", g: "pm", s: "spa2", t: "Person-months", q: "How do you convert percent effort into person-months? Try 25% of a 9-month appointment.",
       a: "Percent effort × months in the appointment. 25% × 9 = 2.25 person-months. (Other checks: 10% of 12 months = 1.2; 35% of a 3-month summer = 1.05.)" },
     { id: "b12", s: "spa2", t: "Salary", q: "Can you direct-charge administrative or clerical salaries?",
       a: "Normally no, since they’re recovered through indirect costs. The exception is when the work is integral and identifiable to the project, is shown in the budget and justification (it counts as a prior-approval item), and isn’t also in the indirect pool." },
-    { id: "b13", s: "spa2", t: "Fringe", q: "What are the FY27 fringe rates (from 7/1/2026)?",
+    { id: "b13", g: "fringe", s: "spa2", t: "Fringe", q: "What are the FY27 fringe rates (from 7/1/2026)?",
       a: "30.7% on government-funded salaries and 35% on non-government. Use these for budgeting until SPA announces a change." },
-    { id: "b14", s: "spa2", t: "Salary", q: "What is the PHS/NIH salary cap now, and how do you budget a person whose IBS exceeds it?",
+    { id: "b14", g: "phscap", s: "spa2", t: "Salary", q: "What is the PHS/NIH salary cap now, and how do you budget a person whose IBS exceeds it?",
       a: "$228,000 (effective Jan 2026). Budget at the cap and explain that in the justification; use the person’s true IBS only for sponsors with no cap. Example: $300k IBS at 10% + 30.7% fringe comes to about $29,800 under the cap vs $39,210 actual, so the department absorbs about $9,410." },
     { id: "b15", s: "spa2", t: "Students", q: "Graduate research assistants: fringe, and the NIH compensation ceiling?",
       a: "Their salary is chargeable to the project and carries no fringe. NIH limits grad-student pay to the zero-level NRSA stipend, $63,480. Tuition remission is not part of salary: it goes under Other costs." },
@@ -79,29 +79,29 @@ SPA.tabs.practice = (function () {
       a: "A postdoc paid as an employee (Research Scientist) receives salary, which can go on a project. A fellow receives a stipend, which generally can’t be charged to a research project unless the award itself calls for it." },
     { id: "b17", s: "spa2", t: "Consultants", q: "What makes someone a consultant rather than staff or a subrecipient?",
       a: "An outside expert paid a fee for service who uses their own equipment, handles their own taxes, isn’t a Columbia employee and doesn’t do programmatic work or deliverables. Columbia keeps the IP. A classification form is needed and the agreement is set up via Purchasing after award." },
-    { id: "b18", s: "spa2", t: "Equipment", q: "What is the equipment threshold, and what about a $3,000 laptop?",
+    { id: "b18", g: "equipment", s: "spa2", t: "Equipment", q: "What is the equipment threshold, and what about a $3,000 laptop?",
       a: "Equipment is $5,000 or more per unit and is left out of MTDC. Computing devices under $5,000 can still be charged directly if they are essential, allocable and documented." },
     { id: "b19", s: "spa2", t: "Travel", q: "Which airline rule applies to federally funded travel, and where does NSF want travel itemized?",
       a: "The Fly America Act: use U.S. flag carriers. NSF wants it itemized by destination on Line E. The travel line is also not the place for study-subject costs." },
-    { id: "b20", s: "spa2", t: "Subawards", q: "How do you budget a subaward’s indirect costs?",
+    { id: "b20", g: "nicra", s: "spa2", t: "Subawards", q: "How do you budget a subaward’s indirect costs?",
       a: "Show direct and indirect separately, backed by the sub’s detailed budget, justification and SOW. Columbia charges its own indirect on only the first $25,000 of the subaward. The sub’s rate is its negotiated rate (NICRA) if it has one; otherwise the 15% de minimis of MTDC, or 10% under NIH." },
-    { id: "b21", s: "spa2", t: "Subawards", q: "A $40,000 subaward in year 1 and Columbia direct costs of $100,000: what is the year-1 MTDC? (assume nothing else is excluded)",
+    { id: "b21", g: "twentyfive", s: "spa2", t: "Subawards", q: "A $40,000 subaward in year 1 and Columbia direct costs of $100,000: what is the year-1 MTDC? (assume nothing else is excluded)",
       a: "$100,000 + $25,000 (the first $25k of the subaward counts in the base) = $125,000. At the 64.5% on-campus rate, F&A is $80,625. Once $25k has been counted, later years add nothing further for that subaward." },
-    { id: "b22", s: "spa2", t: "Participant support", q: "What are participant support costs and what treatment do they get?",
+    { id: "b22", g: "partsupport", s: "spa2", t: "Participant support", q: "What are participant support costs and what treatment do they get?",
       a: "Money for people attending a conference or training: stipends, subsistence, travel, registration, dependent care. Not for research subjects, staff or consultants. They are excluded from MTDC, may be added without prior approval if the NOFO/award allows, but can’t be rebudgeted out of that category without agency approval." },
     { id: "b23", s: "spa2", t: "Patient care", q: "What goes into research patient care costs?",
       a: "Outpatient items (such as MRI or X-ray) and inpatient care. Professional fees are left out. Patient care is excluded from MTDC." },
-    { id: "b24", s: "spa2", t: "F&A", q: "What are Columbia’s three research F&A rate types, and how is the one for an award chosen?",
+    { id: "b24", g: "rates", s: "spa2", t: "F&A", q: "What are Columbia’s three research F&A rate types, and how is the one for an award chosen?",
       a: "On-campus (64.5%), modified off-campus (28.5%) and off-campus (26%), rates for FY25 until amended; Lamont on-campus is 55.5%. One rate applies per award, set by where more than half of the activity happens. Only Columbia personnel count, not subawardees." },
-    { id: "b25", s: "spa2", t: "F&A", q: "Where does the F&A rate itself come from?",
+    { id: "b25", g: "nicra", s: "spa2", t: "F&A", q: "Where does the F&A rate itself come from?",
       a: "A federally negotiated agreement (the NICRA, negotiated with HHS), not something set grant by grant. Non-research (OSA) rates are 33% on-campus and 26% off-campus. For non-profit foundations the sponsor’s rate applies, or SPA aims for the federal rate." },
-    { id: "b26", s: "spa2", t: "MTDC", q: "Define MTDC and give the formula.",
+    { id: "b26", g: "mtdc", s: "spa2", t: "MTDC", q: "Define MTDC and give the formula.",
       a: "Modified Total Direct Costs: total direct costs minus excluded items (equipment, capital expenditures, patient care, tuition remission, off-site rent, and any subaward portion past $25k). F&A = MTDC × F&A rate. It does include salaries, fringe, supplies, services, travel, subject payments and the first $25k of each subaward." },
-    { id: "b27", s: "spa2", t: "MTDC", q: "Total direct costs $200,000 include $20,000 of equipment and a $40,000 subaward. On-campus F&A?",
+    { id: "b27", g: "mtdc", s: "spa2", t: "MTDC", q: "Total direct costs $200,000 include $20,000 of equipment and a $40,000 subaward. On-campus F&A?",
       a: "$200,000 − $20,000 equipment − ($40,000 − $25,000 = $15,000 of the subaward over the line) = $165,000 MTDC. × 64.5% = $106,425." },
-    { id: "b28", s: "spa2", t: "Modular", q: "When may an NIH application use a modular budget?",
+    { id: "b28", g: "modular", s: "spa2", t: "Modular", q: "When may an NIH application use a modular budget?",
       a: "For research applications asking $250,000 or less in direct costs per year, under activity codes R01, R03, R15, R21 or R34. Consortium F&A isn’t counted toward the cap." },
-    { id: "b29", s: "spa2", t: "Modular", q: "How do you size a modular request?",
+    { id: "b29", g: "modular", s: "spa2", t: "Modular", q: "How do you size a modular request?",
       a: "Build the detailed budget by year with about 3% annual inflation, subtract consortium F&A, then round to the nearest $25,000 module. Keep the module count the same each year, except to add back one-time equipment. Justify personnel, consortium (rounded to $1,000) and additional narrative." },
     { id: "b30", s: "spa2", t: "Justification", q: "What does the budget justification do?",
       a: "It explains every budget line in words: why each person, item and trip is needed. Items that are normally unallowable must be justified explicitly, and equipment is approved line by line by the sponsor." }
@@ -216,7 +216,7 @@ SPA.tabs.practice = (function () {
       '<div class="pr-meta"><span class="pill">' + esc(SESS[c.s].label) + ' · ' + esc(c.t) + '</span><span class="pr-box b' + (cs ? cs.box : 0) + '">' + boxLbl + '</span></div>' +
       '<div class="pr-stage"><div class="pr-card' + (ui.flipped ? ' flip' : '') + '" role="button" tabindex="0" data-act="flip" aria-label="Flip card" aria-pressed="' + ui.flipped + '">' +
         '<div class="pr-face pr-fr"><div class="pr-tag">Question</div><div class="pr-text">' + esc(c.q) + '</div><div class="pr-tap">Tap to reveal</div></div>' +
-        '<div class="pr-face pr-bk"><div class="pr-tag">Answer</div><div class="pr-text pr-ans">' + esc(c.a) + '</div></div>' +
+        '<div class="pr-face pr-bk"><div class="pr-tag">Answer</div><div class="pr-text pr-ans">' + esc(c.a) + '</div>' + glossLink(c) + '</div>' +
       '</div></div>' +
       '<div class="pr-actions' + (ui.flipped ? ' on' : '') + '">' +
         '<button type="button" class="pr-btn pr-again" data-act="again"' + (ui.flipped ? '' : ' disabled') + '>↺ Again<small>' + (counted(c.id) ? 'back to box 1' : 'try again soon') + '</small></button>' +
@@ -228,6 +228,13 @@ SPA.tabs.practice = (function () {
   }
 
   function counted(id) { return ui.scope === "due" || isNew(id) || dueNow(id); }   // practice-only passes leave not-yet-due cards alone
+
+  // deep link into the Content tab's glossary when that term exists
+  function glossLink(c) {
+    const C = SPA.content;
+    if (!c.g || !C || !C.openTerm || !(C.glossary || []).some(t => t.id === c.g)) return '';
+    return '<button type="button" class="pr-gloss" data-act="term" data-id="' + esc(c.g) + '">📚 See it in Content ›</button>';
+  }
 
   function gotHint(id) {
     if (ui.relapsed[id]) return 'stays in box 1';
@@ -295,6 +302,7 @@ SPA.tabs.practice = (function () {
       case "flip": return flip();
       case "got": return answer(true);
       case "again": return answer(false);
+      case "term": return SPA.content.openTerm(el.dataset.id);
       case "quit": ui.view = "home"; return renderHome();
       case "home": ui.view = "home"; return renderHome();
       case "reset":
