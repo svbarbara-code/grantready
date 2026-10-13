@@ -215,8 +215,8 @@ SPA.tabs.practice = (function () {
       '<div class="pr-prog" aria-hidden="true"><span style="width:' + pct + '%"></span></div>' +
       '<div class="pr-meta"><span class="pill">' + esc(SESS[c.s].label) + ' · ' + esc(c.t) + '</span><span class="pr-box b' + (cs ? cs.box : 0) + '">' + boxLbl + '</span></div>' +
       '<div class="pr-stage"><div class="pr-card' + (ui.flipped ? ' flip' : '') + '" role="button" tabindex="0" data-act="flip" aria-label="Flip card" aria-pressed="' + ui.flipped + '">' +
-        '<div class="pr-face pr-front"><div class="pr-tag">Question</div><div class="pr-text">' + esc(c.q) + '</div><div class="pr-tap">Tap to reveal</div></div>' +
-        '<div class="pr-face pr-back"><div class="pr-tag">Answer</div><div class="pr-text pr-ans">' + esc(c.a) + '</div></div>' +
+        '<div class="pr-face pr-fr"><div class="pr-tag">Question</div><div class="pr-text">' + esc(c.q) + '</div><div class="pr-tap">Tap to reveal</div></div>' +
+        '<div class="pr-face pr-bk"><div class="pr-tag">Answer</div><div class="pr-text pr-ans">' + esc(c.a) + '</div></div>' +
       '</div></div>' +
       '<div class="pr-actions' + (ui.flipped ? ' on' : '') + '">' +
         '<button type="button" class="pr-btn pr-again" data-act="again"' + (ui.flipped ? '' : ' disabled') + '>↺ Again<small>' + (counted(c.id) ? 'back to box 1' : 'try again soon') + '</small></button>' +
