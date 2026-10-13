@@ -1,0 +1,231 @@
+<!doctype html><html lang="en"><head><meta name="robots" content="noindex,nofollow"><!-- GrantReady — app shell. Owned by the HUB session only.
+     build.py replaces the GRX:* markers with design tokens, per-tab CSS, the
+     bottom nav, and one <script src="tabs/<tab>.js"> per tab. -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#11243d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GrantReady">
+<title>GrantReady</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* ---- design tokens (from design/tokens.css) ---- */
+/* GrantReady — design tokens (PLACEHOLDER).
+   Owned by the spa-design session (Visual Identity / Claude Design).
+   The hub inlines this into shell.html at build time. Override freely here;
+   every tab styles through these tokens, so changing them re-skins the whole app. */
+:root {
+  --ink:        #14233b;   /* primary text on light */
+  --ink-soft:   #46566e;   /* secondary text */
+  --paper:      #f6f8fb;   /* app background */
+  --card:       #ffffff;   /* surfaces */
+  --rule:       #e3e8ef;   /* borders / hairlines */
+  --brand:      #1f5fae;   /* primary accent (links, active tab) */
+  --brand-deep: #11243d;   /* header ground */
+  --brand-soft: #d9e6f6;   /* tint fill */
+  --ember:      #d98a2b;   /* warm accent / progress */
+  --good:       #2e8b57;   /* done / correct */
+  --warn:       #c0532b;   /* attention */
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --u: 8px;                /* spacing unit */
+  --maxw: 640px;           /* content column */
+  --radius: 14px;
+}
+:root:not([data-theme="light"]) {
+  @media (prefers-color-scheme: dark) {
+    --ink:        #e8edf5;
+    --ink-soft:   #a3b1c6;
+    --paper:      #0d1726;
+    --card:       #14233b;
+    --rule:       #26374f;
+    --brand:      #6ea8e6;
+    --brand-deep: #0a1422;
+    --brand-soft: #1b3252;
+    --ember:      #e2a456;
+    --good:       #57b07e;
+    --warn:       #e07a52;
+  }
+}
+:root[data-theme="dark"] {
+  --ink:        #e8edf5;
+  --ink-soft:   #a3b1c6;
+  --paper:      #0d1726;
+  --card:       #14233b;
+  --rule:       #26374f;
+  --brand:      #6ea8e6;
+  --brand-deep: #0a1422;
+  --brand-soft: #1b3252;
+  --ember:      #e2a456;
+  --good:       #57b07e;
+  --warn:       #e07a52;
+}
+
+/* ---- base ---- */
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: var(--body);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+}
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; text-wrap: balance; margin: 0 0 calc(var(--u)*1.5); }
+a { color: var(--brand); }
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 calc(var(--u)*2); }
+
+/* ---- top bar ---- */
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--brand-deep); color: #fff;
+  padding: calc(var(--u)*1.25) 0 calc(var(--u)*1.25);
+  padding-top: calc(env(safe-area-inset-top) + var(--u)*1.25);
+}
+.topbar .wrap { display: flex; align-items: center; gap: calc(var(--u)*1.25); }
+.topbar .mark { width: 30px; height: 30px; border-radius: 8px; flex: 0 0 auto; }
+.topbar h1 { font-size: 1.15rem; margin: 0; color: #fff; letter-spacing: .2px; }
+.topbar .sub { margin-left: auto; font-size: .72rem; color: #b9d0ee; font-family: var(--body); font-weight: 600; letter-spacing: .4px; text-transform: uppercase; }
+
+/* ---- panels ---- */
+main { padding: calc(var(--u)*2.5) 0 calc(var(--u)*12); }  /* room for bottom nav */
+.panel { display: none; }
+.panel.on { display: block; animation: fade .18s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.muted { color: var(--ink-soft); }
+.card { background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: calc(var(--u)*2); margin: 0 0 calc(var(--u)*1.5); }
+.pill { display: inline-block; font-size: .72rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: var(--brand-soft); color: var(--brand-deep); }
+.stub { text-align: center; color: var(--ink-soft); padding: calc(var(--u)*5) var(--u); }
+.stub .big { font-size: 2.4rem; display: block; margin-bottom: var(--u); }
+
+/* ---- bottom nav ---- */
+.tabbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  border-top: 1px solid var(--rule);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tabbar .row { max-width: var(--maxw); margin: 0 auto; display: flex; }
+.tabbar button {
+  flex: 1 1 0; min-width: 0; appearance: none; border: 0; background: none;
+  color: var(--ink-soft); font-family: var(--body); font-size: .62rem; font-weight: 600;
+  padding: calc(var(--u)*0.9) 2px calc(var(--u)*1.1); cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+}
+.tabbar button .ic { font-size: 1.15rem; line-height: 1; }
+.tabbar button[aria-current="true"] { color: var(--brand); }
+.tabbar button:focus-visible { outline: 2px solid var(--brand); outline-offset: -2px; border-radius: 8px; }
+/* ---- per-tab css (owned by each tab session) ---- */
+/* === home === */
+[data-panel="home"] .hm-hero { margin-bottom: calc(var(--u)*2); }
+[data-panel="home"] .hm-hero h2 { font-size: 2rem; margin-bottom: 4px; }
+[data-panel="home"] .hm-next {
+  background: linear-gradient(140deg, var(--brand-deep), color-mix(in srgb, var(--brand-deep) 70%, var(--brand)));
+  color: #fff; border-radius: var(--radius); padding: calc(var(--u)*2.5) calc(var(--u)*2);
+  margin-bottom: calc(var(--u)*1.5);
+}
+[data-panel="home"] .hm-when { font-size: .74rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--ember); }
+[data-panel="home"] .hm-title { font-family: var(--display); font-size: 1.45rem; font-weight: 600; margin: 4px 0; }
+[data-panel="home"] .hm-meta { font-size: .85rem; color: #c3d4ec; }
+[data-panel="home"] .hm-sign { margin-top: calc(var(--u)*1.5); font-size: .82rem; line-height: 1.45; background: rgba(255,255,255,.12); padding: calc(var(--u)*1.25); border-radius: 10px; }
+[data-panel="home"] .hm-sign b { color: #fff; }
+[data-panel="home"] .hm-prog-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: calc(var(--u)*1.5); font-size: .85rem; }
+[data-panel="home"] .hm-dots { display: flex; gap: var(--u); }
+[data-panel="home"] .hm-dot { flex: 1 1 0; aspect-ratio: 1; border-radius: 10px; background: var(--brand-soft); display: flex; align-items: center; justify-content: center; border: 1px solid var(--rule); }
+[data-panel="home"] .hm-dot.past { background: var(--good); }
+[data-panel="home"] .hm-dot.past .hm-code { color: #fff; }
+[data-panel="home"] .hm-dot.now { background: var(--ember); border-color: var(--ember); }
+[data-panel="home"] .hm-dot.now .hm-code { color: #3a2300; }
+[data-panel="home"] .hm-code { font-size: .72rem; font-weight: 700; color: var(--brand-deep); }
+[data-panel="home"] .hm-tip { font-size: .88rem; }
+[data-panel="home"] .hm-foot { font-size: .76rem; margin-top: calc(var(--u)*2); }
+
+</style>
+
+<div class="topbar"><div class="wrap">
+  <img class="mark" src="icon-192.png" alt="">
+  <h1>GrantReady</h1>
+  <span class="sub" id="topsub"></span>
+</div></div>
+
+<main><div class="wrap" id="app"></div></main>
+
+<nav class="tabbar" aria-label="Sections"><div class="row" id="tabbar"></div></nav>
+
+<script>
+/* ---- GrantReady shell core. Defines window.SPA. Owned by the hub. ---- */
+(function () {
+  const TABS = [{id:"home",label:"Home",icon:"🏠"},{id:"content",label:"Content",icon:"📚"},{id:"schedule",label:"Schedule",icon:"🗓️"},{id:"methods",label:"Methods",icon:"🧭"},{id:"exercises",label:"Exercises",icon:"🧮"},{id:"homework",label:"Homework",icon:"📝"},{id:"practice",label:"Practice",icon:"🎴"}];
+  const store = {
+    get(k, d) { try { const v = localStorage.getItem("gr:" + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+    set(k, v) { try { localStorage.setItem("gr:" + k, JSON.stringify(v)); } catch (e) {} }
+  };
+  const SPA = window.SPA = {
+    tabs: {},            // each tab module registers: SPA.tabs.<id> = { render(panel), onShow?(panel) }
+    TABS, store,
+    cur: null,
+    panels: {},
+    esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c])); },
+    // next/last session helpers (shared; Tuesdays 12:00 ET, Fall 2026)
+    sessions: [
+      { id:"spa1", code:"TC4011", title:"Proposal Preparation",  date:"2026-10-06" },
+      { id:"spa2", code:"TC4012", title:"Budget Creation",        date:"2026-10-13" },
+      { id:"spa3", code:"TC4013", title:"Managing the Award",     date:"2026-10-20" },
+      { id:"spf1", code:"TC4014", title:"Financial Management",   date:"2026-10-27" },
+      { id:"spf2", code:"TC4015", title:"Accounting & Closeout",  date:"2026-11-10" }
+    ],
+    go(id) {
+      if (!id) return;
+      if (SPA.tabs[id]) {
+        if (SPA.cur === id) return;
+        SPA.cur = id;
+        for (const t of TABS) SPA.panels[t.id] && SPA.panels[t.id].classList.toggle("on", t.id === id);
+        document.querySelectorAll("#tabbar button").forEach(b => b.setAttribute("aria-current", String(b.dataset.tab === id)));
+        const mod = SPA.tabs[id];
+        if (mod && !mod._rendered) { try { mod.render && mod.render(SPA.panels[id]); } catch (e) { console.error(id, e); } mod._rendered = true; }
+        else if (mod && mod.onShow) { try { mod.onShow(SPA.panels[id]); } catch (e) { console.error(id, e); } }
+        if (location.hash.slice(1) !== id) history.pushState({ tab: id }, "", "#" + id);
+        window.scrollTo(0, 0);
+      }
+    }
+  };
+
+  function build() {
+    const app = document.getElementById("app"), bar = document.getElementById("tabbar");
+    for (const t of TABS) {
+      const sec = document.createElement("section");
+      sec.className = "panel"; sec.dataset.panel = t.id; sec.id = "panel-" + t.id;
+      sec.innerHTML = '<div class="stub"><span class="big">' + t.icon + '</span>' + SPA.esc(t.label) +
+        '<div class="muted" style="font-size:.85rem;margin-top:6px">Coming soon</div></div>';
+      app.appendChild(sec); SPA.panels[t.id] = sec;
+
+      const b = document.createElement("button");
+      b.dataset.tab = t.id; b.type = "button";
+      b.innerHTML = '<span class="ic">' + t.icon + '</span>' + SPA.esc(t.label);
+      b.addEventListener("click", () => SPA.go(t.id));
+      bar.appendChild(b);
+    }
+    window.addEventListener("popstate", () => { const h = location.hash.slice(1); if (h && SPA.tabs[h]) SPA.go(h); });
+    const start = (location.hash.slice(1) && SPA.tabs[location.hash.slice(1)]) ? location.hash.slice(1) : (TABS[0] && TABS[0].id);
+    SPA.cur = null; SPA.go(start);
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", build); else build();
+  if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+})();
+</script>
+<script src="tabs/home.js?v=3d090443"></script>
+<script src="tabs/content.js?v=9f84b6ab"></script>
+<script src="tabs/schedule.js?v=d0afb6df"></script>
+<script src="tabs/methods.js?v=e9865399"></script>
+<script src="tabs/exercises.js?v=931e9a1c"></script>
+<script src="tabs/homework.js?v=22516462"></script>
+<script src="tabs/practice.js?v=28331b72"></script>
+</body></html>
